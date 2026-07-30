@@ -1,0 +1,594 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的工具箱 - 发现好用的工具和资源</title>
+  <meta name="description" content="精选好用的工具、网站和资源，涵盖AI、开发、设计、效率等多个领域">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="brand">
+          <i class="bi bi-box-seam-fill brand-icon"></i>
+          <span class="brand-text">我的工具箱</span>
+        </div>
+        <div class="header-actions">
+          <div class="search-box">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="搜索工具或网站..." class="search-input">
+            <kbd class="search-kbd">Ctrl+K</kbd>
+          </div>
+          <button id="themeToggle" class="theme-toggle" title="切换主题">
+            <i class="bi bi-moon-fill"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="container">
+      <!-- Category Tabs -->
+      <div class="category-tabs" id="categoryTabs">
+        <button class="tab-btn active" data-category="all">
+          <i class="bi bi-grid-fill"></i> 全部
+        </button>
+        <button class="tab-btn" data-category="ai">
+          <i class="bi bi-robot"></i> AI 工具
+        </button>
+        <button class="tab-btn" data-category="dev">
+          <i class="bi bi-code-slash"></i> 开发工具
+        </button>
+        <button class="tab-btn" data-category="design">
+          <i class="bi bi-palette"></i> 设计工具
+        </button>
+        <button class="tab-btn" data-category="productivity">
+          <i class="bi bi-lightning-fill"></i> 效率工具
+        </button>
+        <button class="tab-btn" data-category="media">
+          <i class="bi bi-camera-reels"></i> 媒体工具
+        </button>
+        <button class="tab-btn" data-category="resource">
+          <i class="bi bi-book"></i> 学习资源
+        </button>
+      </div>
+
+      <!-- Tools Grid -->
+      <div class="tools-grid" id="toolsGrid">
+        <!-- AI 工具 -->
+        <div class="tool-card" data-category="ai">
+          <a href="https://chat.openai.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #10a37f, #1a7f64)">
+              <i class="bi bi-chat-dots-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">ChatGPT</h3>
+              <p class="tool-desc">OpenAI 旗下 AI 对话助手，支持写作、编程、分析等多种任务</p>
+              <div class="tool-tags">
+                <span class="tag">AI对话</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="ai">
+          <a href="https://claude.ai" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #d97706, #b45309)">
+              <i class="bi bi-braces-asterisk"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Claude</h3>
+              <p class="tool-desc">Anthropic 推出的 AI 助手，擅长长文本分析和复杂推理</p>
+              <div class="tool-tags">
+                <span class="tag">AI对话</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="ai">
+          <a href="https://gemini.google.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #4285f4, #34a853)">
+              <i class="bi bi-stars"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Gemini</h3>
+              <p class="tool-desc">Google 推出的多模态 AI，支持文本、图片、代码理解</p>
+              <div class="tool-tags">
+                <span class="tag">AI对话</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="ai">
+          <a href="https://midjourney.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #5865f2, #eb459e)">
+              <i class="bi bi-image-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Midjourney</h3>
+              <p class="tool-desc">AI 图像生成工具，通过文字描述创建高质量图片</p>
+              <div class="tool-tags">
+                <span class="tag">AI绘图</span>
+                <span class="tag">付费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="ai">
+          <a href="https://www.perplexity.ai" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #20b2aa, #008080)">
+              <i class="bi bi-search-heart"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Perplexity</h3>
+              <p class="tool-desc">AI 搜索引擎，提供带引用来源的智能搜索结果</p>
+              <div class="tool-tags">
+                <span class="tag">AI搜索</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 开发工具 -->
+        <div class="tool-card" data-category="dev">
+          <a href="https://github.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #24292e, #586069)">
+              <i class="bi bi-github"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">GitHub</h3>
+              <p class="tool-desc">全球最大代码托管平台，开源项目聚集地</p>
+              <div class="tool-tags">
+                <span class="tag">代码托管</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="dev">
+          <a href="https://code.visualstudio.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #007acc, #1e90ff)">
+              <i class="bi bi-terminal-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">VS Code</h3>
+              <p class="tool-desc">微软出品的免费代码编辑器，插件生态丰富</p>
+              <div class="tool-tags">
+                <span class="tag">编辑器</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="dev">
+          <a href="https://vercel.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #000000, #333333)">
+              <i class="bi bi-cloud-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Vercel</h3>
+              <p class="tool-desc">前端部署平台，支持 Next.js 等框架一键部署</p>
+              <div class="tool-tags">
+                <span class="tag">部署</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="dev">
+          <a href="https://codepen.io" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #1e1f26, #76d275)">
+              <i class="bi bi-braces"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">CodePen</h3>
+              <p class="tool-desc">在线前端代码编辑器，实时预览 HTML/CSS/JS</p>
+              <div class="tool-tags">
+                <span class="tag">在线编辑</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="dev">
+          <a href="https://regex101.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #059669, #10b981)">
+              <i class="bi bi-file-earmark-code"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Regex101</h3>
+              <p class="tool-desc">正则表达式在线测试工具，支持实时匹配和调试</p>
+              <div class="tool-tags">
+                <span class="tag">正则</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 设计工具 -->
+        <div class="tool-card" data-category="design">
+          <a href="https://www.figma.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #a259ff, #f24e1e)">
+              <i class="bi bi-bezier2"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Figma</h3>
+              <p class="tool-desc">在线协作设计工具，UI/UX 设计首选</p>
+              <div class="tool-tags">
+                <span class="tag">UI设计</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="design">
+          <a href="https://www.canva.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #7c3aed, #c084fc)">
+              <i class="bi bi-easel-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Canva</h3>
+              <p class="tool-desc">在线平面设计平台，海量模板一键生成海报/PPT</p>
+              <div class="tool-tags">
+                <span class="tag">平面设计</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="design">
+          <a href="https://unsplash.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #111111, #333333)">
+              <i class="bi bi-camera-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Unsplash</h3>
+              <p class="tool-desc">免费高清图片库，可商用的优质摄影素材</p>
+              <div class="tool-tags">
+                <span class="tag">图片素材</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="design">
+          <a href="https://www.iconfont.cn" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #1677ff, #4096ff)">
+              <i class="bi bi-type"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Iconfont</h3>
+              <p class="tool-desc">阿里巴巴矢量图标库，海量图标免费下载</p>
+              <div class="tool-tags">
+                <span class="tag">图标</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="design">
+          <a href="https://colorhunt.co" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #ff6b6b, #feca57)">
+              <i class="bi bi-palette-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">ColorHunt</h3>
+              <p class="tool-desc">配色方案推荐网站，发现好看的色彩搭配</p>
+              <div class="tool-tags">
+                <span class="tag">配色</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 效率工具 -->
+        <div class="tool-card" data-category="productivity">
+          <a href="https://notion.so" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #000000, #333333)">
+              <i class="bi bi-journal-text"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Notion</h3>
+              <p class="tool-desc">全能笔记和知识管理工具，支持团队协作</p>
+              <div class="tool-tags">
+                <span class="tag">笔记</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="productivity">
+          <a href="https://excalidraw.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe)">
+              <i class="bi bi-pencil-square"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Excalidraw</h3>
+              <p class="tool-desc">手绘风格白板工具，适合画流程图和架构图</p>
+              <div class="tool-tags">
+                <span class="tag">白板</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="productivity">
+          <a href="https://www.notion.so" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #e17055, #fdcb6e)">
+              <i class="bi bi-lightning-charge-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Raycast</h3>
+              <p class="tool-desc">Mac 上的高效启动器，替代 Spotlight 的效率神器</p>
+              <div class="tool-tags">
+                <span class="tag">启动器</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="productivity">
+          <a href="https://todoist.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #e44332, #ff6b6b)">
+              <i class="bi bi-check2-square"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Todoist</h3>
+              <p class="tool-desc">简洁高效的待办事项管理工具，支持多平台同步</p>
+              <div class="tool-tags">
+                <span class="tag">任务管理</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="productivity">
+          <a href="https://www.marksheet.io" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #00b894, #55efc4)">
+              <i class="bi bi-markdown-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Markdown Here</h3>
+              <p class="tool-desc">邮件中使用 Markdown 的浏览器插件</p>
+              <div class="tool-tags">
+                <span class="tag">Markdown</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 媒体工具 -->
+        <div class="tool-card" data-category="media">
+          <a href="https://剪映.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #fe2c55, #25f4ee)">
+              <i class="bi bi-film"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">剪映</h3>
+              <p class="tool-desc">字节跳动出品的视频剪辑工具，AI 功能强大</p>
+              <div class="tool-tags">
+                <span class="tag">视频剪辑</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="media">
+          <a href="https://www.audacityteam.org" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #0066ff, #00ccff)">
+              <i class="bi bi-music-note-beamed"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Audacity</h3>
+              <p class="tool-desc">免费开源的音频编辑软件，功能专业</p>
+              <div class="tool-tags">
+                <span class="tag">音频编辑</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="media">
+          <a href="https://www.remove.bg" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #00b4d8, #0077b6)">
+              <i class="bi bi-stars"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Remove.bg</h3>
+              <p class="tool-desc">AI 一键去除图片背景，效果出色</p>
+              <div class="tool-tags">
+                <span class="tag">抠图</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="media">
+          <a href="https://tinypng.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #ffcc02, #ff9900)">
+              <i class="bi bi-file-earmark-image"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">TinyPNG</h3>
+              <p class="tool-desc">在线图片压缩工具，支持 PNG/JPEG，保持画质</p>
+              <div class="tool-tags">
+                <span class="tag">图片压缩</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="media">
+          <a href="https://screenrec.com" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #6c5ce7, #fd79a8)">
+              <i class="bi bi-record-circle"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">ScreenRec</h3>
+              <p class="tool-desc">免费屏幕录制工具，支持录制和分享</p>
+              <div class="tool-tags">
+                <span class="tag">录屏</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+                <div class="tool-card" data-category="media">
+          <a href="photo-stitch/" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #f472b6, #ec4899)">
+              <i class="bi bi-images"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">照片拼接工具</h3>
+              <p class="tool-desc">支持 12 种布局模板，拖拽排序，自定义间距/背景/圆角</p>
+              <div class="tool-tags">
+                <span class="tag">图片处理</span>
+                <span class="tag">在线使用</span>
+              </div>
+            </div>
+          </a>
+        </div>
+<!-- 学习资源 -->
+        <div class="tool-card" data-category="resource">
+          <a href="https://github.com/jwasham/coding-interview-university" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #e74c3c, #c0392b)">
+              <i class="bi bi-book-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Coding Interview University</h3>
+              <p class="tool-desc">GitHub 上最全的计算机科学学习资源合集</p>
+              <div class="tool-tags">
+                <span class="tag">编程学习</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="resource">
+          <a href="https://roadmap.sh" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #2ecc71, #27ae60)">
+              <i class="bi bi-map"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">Roadmap.sh</h3>
+              <p class="tool-desc">开发者学习路线图，清晰的技术成长路径</p>
+              <div class="tool-tags">
+                <span class="tag">学习路线</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="resource">
+          <a href="https://freecodecamp.org" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #0a0a23, #1a1a4e)">
+              <i class="bi bi-laptop-fill"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">freeCodeCamp</h3>
+              <p class="tool-desc">免费编程学习平台，从零开始学编程</p>
+              <div class="tool-tags">
+                <span class="tag">编程学习</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="resource">
+          <a href="https://www.youtube.com/@ThePrimeTimeagen" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #ff0000, #cc0000)">
+              <i class="bi bi-youtube"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">ThePrimeagen</h3>
+              <p class="tool-desc">YouTube 技术博主，幽默讲解编程和开发工具</p>
+              <div class="tool-tags">
+                <span class="tag">视频教程</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="tool-card" data-category="resource">
+          <a href="https://leetcode.cn" target="_blank" class="tool-link">
+            <div class="tool-icon" style="background: linear-gradient(135deg, #ffa116, #ff8c00)">
+              <i class="bi bi-braces-asterisk"></i>
+            </div>
+            <div class="tool-info">
+              <h3 class="tool-name">力扣 LeetCode</h3>
+              <p class="tool-desc">算法刷题平台，技术面试必备</p>
+              <div class="tool-tags">
+                <span class="tag">刷题</span>
+                <span class="tag">免费</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <i class="bi bi-search empty-icon"></i>
+        <p class="empty-text">没有找到匹配的工具</p>
+        <p class="empty-hint">试试其他关键词？</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-text">
+          <i class="bi bi-box-seam-fill"></i> 我的工具箱 &copy; 2026
+        </p>
+        <p class="footer-sub">
+          精选好用的工具和资源 · 持续更新中
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
