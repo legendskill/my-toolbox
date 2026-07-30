@@ -4,7 +4,6 @@
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
 
-// Load saved theme
 const savedTheme = localStorage.getItem('theme') || 'light';
 html.setAttribute('data-theme', savedTheme);
 updateThemeIcon(savedTheme);
@@ -23,49 +22,88 @@ function updateThemeIcon(theme) {
 }
 
 // ================================
-// Category Filter
+// Tab Switching
 // ================================
 const tabs = document.querySelectorAll('.tab-btn');
-const cards = document.querySelectorAll('.tool-card');
+const categorySections = document.getElementById('categorySections');
+const toolsGrid = document.getElementById('toolsGrid');
 const emptyState = document.getElementById('emptyState');
+
 let currentCategory = 'all';
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    // Update active tab
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    
-    currentCategory = tab.dataset.category;
-    filterTools();
-  });
-});
+// Collect all tool cards from sections for flat view
+function getAllCards() {
+  return document.querySelectorAll('.category-section .tool-card');
+}
 
-function filterTools() {
-  const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-  let visibleCount = 0;
+// Build flat grid from section cards (for category filter view)
+function buildFlatGrid(category) {
+  const allCards = getAllCards();
+  toolsGrid.innerHTML = '';
+  let count = 0;
 
-  cards.forEach(card => {
-    const category = card.dataset.category;
-    const name = card.querySelector('.tool-name').textContent.toLowerCase();
-    const desc = card.querySelector('.tool-desc').textContent.toLowerCase();
-    const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase()).join(' ');
-
-    const matchCategory = currentCategory === 'all' || category === currentCategory;
-    const matchSearch = !searchTerm || 
-      name.includes(searchTerm) || 
-      desc.includes(searchTerm) || 
-      tags.includes(searchTerm);
-
-    if (matchCategory && matchSearch) {
-      card.style.display = '';
-      visibleCount++;
-    } else {
-      card.style.display = 'none';
+  allCards.forEach(card => {
+    if (card.dataset.category === category) {
+      const clone = card.cloneNode(true);
+      toolsGrid.appendChild(clone);
+      count++;
     }
   });
 
-  emptyState.style.display = visibleCount === 0 ? '' : 'none';
+  return count;
+}
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    currentCategory = tab.dataset.category;
+    const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+
+    if (currentCategory === 'all' && !searchTerm) {
+      // Show sectioned view
+      categorySections.style.display = '';
+      toolsGrid.style.display = 'none';
+      emptyState.style.display = 'none';
+      showAllSections();
+    } else {
+      // Show flat filtered view
+      categorySections.style.display = 'none';
+      toolsGrid.style.display = '';
+      toolsGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
+      toolsGrid.style.gap = '16px';
+      toolsGrid.style.padding = '0';
+      filterFlatView(searchTerm);
+    }
+  });
+});
+
+function showAllSections() {
+  const sections = document.querySelectorAll('.category-section');
+  sections.forEach(s => s.style.display = '');
+}
+
+function filterFlatView(searchTerm) {
+  const allCards = getAllCards();
+  toolsGrid.innerHTML = '';
+  let count = 0;
+
+  allCards.forEach(card => {
+    const matchCategory = currentCategory === 'all' || card.dataset.category === currentCategory;
+    const name = card.querySelector('.tool-name')?.textContent.toLowerCase() || '';
+    const desc = card.querySelector('.tool-desc')?.textContent.toLowerCase() || '';
+    const tags = Array.from(card.querySelectorAll('.tag')).map(t => t.textContent.toLowerCase()).join(' ');
+    const matchSearch = !searchTerm || name.includes(searchTerm) || desc.includes(searchTerm) || tags.includes(searchTerm);
+
+    if (matchCategory && matchSearch) {
+      const clone = card.cloneNode(true);
+      toolsGrid.appendChild(clone);
+      count++;
+    }
+  });
+
+  emptyState.style.display = count === 0 ? '' : 'none';
 }
 
 // ================================
@@ -74,7 +112,26 @@ function filterTools() {
 const searchInput = document.getElementById('searchInput');
 
 searchInput.addEventListener('input', () => {
-  filterTools();
+  const searchTerm = searchInput.value.toLowerCase().trim();
+
+  if (currentCategory === 'all' && !searchTerm) {
+    // Back to sectioned view
+    categorySections.style.display = '';
+    toolsGrid.style.display = 'none';
+    emptyState.style.display = 'none';
+    showAllSections();
+  } else if (currentCategory === 'all' && searchTerm) {
+    // Search within all categories, flat view
+    categorySections.style.display = 'none';
+    toolsGrid.style.display = '';
+    toolsGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
+    toolsGrid.style.gap = '16px';
+    toolsGrid.style.padding = '0';
+    filterFlatView(searchTerm);
+  } else {
+    // Filter within specific category
+    filterFlatView(searchTerm);
+  }
 });
 
 // Ctrl+K shortcut
@@ -83,19 +140,16 @@ document.addEventListener('keydown', (e) => {
     e.preventDefault();
     searchInput.focus();
   }
-  // Escape to clear search
   if (e.key === 'Escape') {
     searchInput.value = '';
     searchInput.blur();
-    filterTools();
+    // Reset to all sections view
+    tabs.forEach(t => t.classList.remove('active'));
+    tabs[0].classList.add('active');
+    currentCategory = 'all';
+    categorySections.style.display = '';
+    toolsGrid.style.display = 'none';
+    emptyState.style.display = 'none';
+    showAllSections();
   }
-});
-
-// ================================
-// Smooth scroll for card hover
-// ================================
-cards.forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    card.style.transition = 'all 0.2s ease';
-  });
 });
